@@ -8,6 +8,7 @@ const PORT = 3020;
 
 const app = express();
 
+app.use(express.json());
 app.use(authRouter);
 
 mongoose.connect(DBC).then(() => {
