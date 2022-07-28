@@ -46,4 +46,30 @@ authRouter.post('/api/signin', async (req, res) => {
   }
 });
 
+authRouter.post('/isValidToken', async (req, res) => {
+   try {
+      const token = req.header('my-souq-auth-token');
+      if(!token) return res.json(false);
+      const verified = jwt.verify(token, "passwordKey" );
+      if (!verified) {
+         return res.json(false); 
+      } else  {
+          const user = await User.findById(verified.id);
+          if (!user) {
+            return res.json(false); 
+          } else {
+            return res.json(true); 
+          } 
+      }
+   } catch (e) {
+    res.status(500).json({error: e.message});
+   }
+ });
+
+authRouter.get('/', myAuth, async  (req, res) => {
+
+    const user = await User.findById(req.user);
+    res.json({ ...user._doc, token: req.token });
+});
+
 module.exports = authRouter;
