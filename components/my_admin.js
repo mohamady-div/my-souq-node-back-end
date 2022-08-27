@@ -17,7 +17,6 @@ const admin = async (req, res, next) => {
         if (user.type  == 'user' || user.type == 'seller') {
             return res.status(401).json({msg: 'this user is not admin '});
         }
-
         req.user = verified.id; 
         req.token = token;
         next();

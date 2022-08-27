@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 const DBC = "mongodb+srv://mon_sa:7nz883lmVyRcG6Al@cluster0.qnkeb.mongodb.net/?retryWrites=true&w=majority";
 const PORT = 3020;
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 mongoose.connect(DBC).then(() => {
     console.log('Conneced :)');
