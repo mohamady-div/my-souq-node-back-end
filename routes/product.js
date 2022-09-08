@@ -28,7 +28,7 @@ productRouter.post('/api/rate-product', auth, async (req, res) => {
     const {id, rating} = req.body;
     let product = await Product.findById(id);
 
-    for (let i =0; i < product.rating.lenght; i++) {
+    for (let i =0; i < product.rating.length; i++) {
       if (product.rating[i].userId == req.user) {
         product.rating.splice(i, 1);
         break;
