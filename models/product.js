@@ -1,4 +1,5 @@
 const  mongoose = require('mongoose');
+const reqtingSchema = require('./rate');
 
 const productSchema = mongoose.Schema({
     name: {
@@ -30,7 +31,7 @@ const productSchema = mongoose.Schema({
         required: true, 
         trim: true
     },
-    
+    rating: [reqtingSchema]
 });
 
 const Product = mongoose.model('Product', productSchema);
