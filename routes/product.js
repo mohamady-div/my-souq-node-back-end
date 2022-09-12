@@ -1,7 +1,7 @@
 const express = require('express');
 const productRouter = express.Router();
 const auth = require('../components/my_auth');
-const Product = require('../models/product');
+const { Product } = require('../models/product');
 
 productRouter.get('/api/get-products', auth, async (req, res) => {
     try {
