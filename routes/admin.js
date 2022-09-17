@@ -2,6 +2,7 @@ const express = require('express');
 const adminRouter = express.Router();
 const admin = require('../components/my_admin');
 const { Product}  = require('../models/product');
+const Order = require('../models/order');
 
 adminRouter.post('/admin/add-product', admin, async (req, res) => {
    try {
@@ -33,6 +34,15 @@ adminRouter.post('/admin/delete-products', admin, async (req, res) => {
     res.json(product);
   } catch (e) {
     res.status(500).json({error: e.message});
+  }
+});
+
+adminRouter.get('/api/all-orders-admin', admin, async (req, res) => {
+  try {
+      const orders = await Order.find({});
+      res.json(orders);
+  } catch (e) {
+      res.status(500).json({error: e.message});
   }
 });
 
