@@ -11,10 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "express": "^4.18.1",
+    "express": "^4.21.2",
     "http": "^0.0.1-security",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.4.4"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "my.souq": "file:"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
